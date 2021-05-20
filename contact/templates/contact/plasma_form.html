@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Covid-Help Plasma Donation{% endblock %}
+{% load custom_tags %}
+
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="card m-5">
+        <div class="card-header">
+            Your information is safe with us.We will share your data with <b>Helth department authorities</b> only ! :)
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Donate Blood and Plasma to Make a Difference !</h5>
+            <div class="row">
+                <div class="col col-md-6 pt-3">
+                    <form method="post" action="">
+                        {% csrf_token %}
+
+                        {{ form.as_p}}  
+
+                        <input type="submit" value="Register" class="btn btn-primary mb-4">
+                    </form>
+                </div>
+
+                <div class="col col-md-6">
+                    <h4>I Have Fully Recovered From COVID-19. Am I Eligible to Donate Plasma?</h4>
+                    <p>Because you fought the infection, your plasma now contains COVID-19 antibodies. These antibodies provided one way for your immune system to fight the virus when you were sick, so your plasma may be able to be used to help others fight off the disease.</p>
+                    <hr>
+                    <h4>I Haven’t Had COVID-19. What Can I Do to Help?</h4>
+                    <p>You can consider donating blood! One blood donation can save up to three lives.</p>
+                    <a href="http://" style="color:red" target="_blank">Click here for blood donation</a> <i class="fas fa-tint" style="color:red"></i>
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'index' %}" class="btn btn-primary "><i class="fas fa-arrow-circle-left"></i></a>
+    </div>
+</div>
+{% endblock content %}

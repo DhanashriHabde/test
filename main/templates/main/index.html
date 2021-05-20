@@ -1,0 +1,202 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Covid-Help Solapur{% endblock %}
+{% load custom_tags %}
+
+
+
+{% block content %}
+
+{% for headline in headlines %}
+<div class="navline">
+            <marquee direction="right" style="color:white;">  
+                    {{headline}}
+            </marquee>  
+            </div>
+</div>
+{% endfor %}
+<div class="container-fluid">
+
+<!--main page start-->
+    <form action="" method="GET" id="filterform" class="pb-3">
+<!--dist-taluka dropdown start-->
+    <div class="row mt-2 text-center pt-4 pl-5" >
+    <!--District select-->
+        <div class="col col-xs-12">
+            <div class="form-group">
+                <label for="District-Select"><b> District</b></label>
+                    <select class="form-control form-control" id="DistrictSelect" name="district">
+                        <option value="" >
+                            Select District
+                        </option>
+                        {% for district in districts %}
+                            <option {% is_option_selected selected_district_id district.pk %} value="{{district.pk}}">{{district.name}}</option>
+                        {% endfor %}
+                    </select>
+            </div>
+        </div>
+
+    <!--Taluka select-->
+        <div class="col col-xs-12">
+            <div class="form-group">
+                <label for="Taluka-Select"><b>Taluka</b></label>
+                    <select class="form-control form-control" name="taluka" id="TalukaSelect">
+                        <option value="">
+                            Select Taluka
+                        </option>
+                        {% for taluka in talukas %}
+                            <option {% is_option_selected selected_taluka_id taluka.pk %} value="{{taluka.pk}}">{{taluka}}</option>
+                        {% endfor %}
+                    </select>
+            </div>
+        </div>
+
+    <!--Facility Select-->
+        <div class="col col-xs-12">
+            <div class="form-group">
+                <label for="Facility-Select"><b>Facility</b></label>
+                    <select class="form-control form-control" id="FacilitySelect" name="facility">
+                        <option value="" >
+                            Select Facility
+                        </option>
+                        {% for facility in facilities %}
+                            <option {% is_option_selected selected_facility_id facility.pk %} value="{{facility.pk}}">
+                            {{facility}}
+                            </option>
+                        {% endfor %}
+                    </select>
+            </div>
+        </div>
+
+    <!--reset-->
+        <div class="col">
+            <div class="mt-3 pt-3">
+                <a href="/" class="btn btn-primary mt-0 text-center pr-5 pl-5">Reset</a>
+            </div>
+        </div>
+        
+    </div>
+
+
+<!--dist-taluka dropdown end-->
+
+
+
+<!--Data table start-->
+    <table class="table table-bordered table-hover table-striped text-center mt-3 mb-5">
+        <thead class="thead-light">
+            <tr>
+                <th rowspan="2">Hospital</th>
+                {% for facility in facilities%}
+                    <th colspan="2">{{facility.title}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for facility in facilities%}
+                    <th>Occupied</th>
+                    <th>Vacant</th>
+                {% endfor %}
+            </tr>
+            
+        </thead>
+
+
+        <tbody>
+            {% for hospital in hospitals %}
+            <tr>
+                <td><a href="/hospital/{{hospital.id}}">{{hospital.name}}</a></td>
+                {% get_availabilities hospital as availabilities %}
+                    {% for avail in availabilities %}
+                        <td>{{avail.total}}</td>
+                        <td class="{% get_table_class avail.available %}">{{avail.available}}</td>
+                    {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+<!--Data table end-->
+
+    <form>
+<!--second section start-->
+    <div class="row">
+    <!--Ambulance data start-->
+        <div class="col">
+        <div class="card" data-aos="fade-right" data-aos-duration="2000" >
+            <div class="card-header">
+                Check for <b>Ambulance list</b> here !
+            </div>
+            <div class="card-body">
+            <h6 class="card-title text-danger"> Note: Some Ambulance Listed here are <b>private</b>.Please contact and verify before continuing.</h6> </h6>
+                <div class="col-md-12 text-center">
+                    <a href="" class="btn btn-primary"><i class="fas fa-6x fa-ambulance"></i></a>
+                    
+                </div>
+                <div class="col-md-12 text-center">
+                <a href="{% url 'ambulance'%}" class="text-danger"><b>Ambulance List</b> <i class="fas fa-list-ul"></i></a>
+                </div>
+                <div class="pt-3 text-center">
+                    <p>Would like to register your Ambulance Service? click below</p>
+                 </div>
+                 
+            </div>
+            <a href="{% url 'contact' %}" class="btn btn-primary">Register your ambulance service here &nbsp;<i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+        
+            
+    <!--Ambulance data end-->
+
+    <!--plasma link start-->
+        <div class="col">
+            <div class="card " data-aos="fade-left" data-aos-duration="3000">
+                <div class="card-header">
+                    Be our Covid Worrior by <b>plasma donation</b> or help us find one !
+                </div>
+                <div class="card-body">
+                <h6 class="card-title text-danger">If you have fully recovered from COVID-19, you may be able to help patients currently fighting the infection by donating your plasma.</h6>
+                    <div class="col text-center">
+                        <a href="{% url 'donateplasma'%}"><img src="{% static 'img/plasma.jpg' %}" height="200" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></a>
+                    </div>
+                    <div class="pt-3 text-center">
+                        <a href="{% url 'donateplasma'%}" class="btn btn-primary">Register for Donation &nbsp;<i class="fas fa-arrow-right"></i></a>&emsp;
+                        <a href="{% url 'contact' %}" class="btn btn-danger ">Contact for Plasma &nbsp;<i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    <!--plasma link end-->
+
+    </div>
+<!--second section end-->
+
+
+</div>
+<!--main page end-->
+
+
+
+
+<script type="text/javascript">
+    window.onload = function(){
+        var DSelect=document.getElementById("DistrictSelect")
+        var TSelect=document.getElementById("TalukaSelect")
+        var FSelect=document.getElementById("FacilitySelect")
+        var form=document.getElementById("filterform")
+
+        var formSubmit = function(){
+            form.submit()
+        }
+
+        DistrictSelect.onchange = formSubmit
+        TalukaSelect.onchange = formSubmit
+        FacilitySelect.onchange = formSubmit
+    }
+</script>
+
+
+{% endblock content %}

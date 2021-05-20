@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Covid-Help Contact-Us{% endblock %}
+{% load custom_tags %}
+
+
+
+{% block content %}
+<div class="container-fluid">
+    
+    <table class="table table-striped tmt-4 mb-4 text-center">
+        <thead class="">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Organization</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Type of service<th>
+            </tr>
+        </thead>
+         <tbody>
+        {% for ambulance in ambulances %}
+       
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{ambulance.name}}</td>
+                <td>{{ambulance.organization}}</td>
+                <td>{{ambulance.phone}}</td>
+                {% if ambulance.paid%}
+                <td>Paid<i class="fas fa-exclamation text-danger"></i><td>
+                {%else%}
+                <td>Free<i class="far fa-check-circle bg-success text-light" style="border-radius:50%"></i><td>
+                {%endif%}
+            </tr>
+       
+        {% endfor %}
+         </tbody>
+</table>
+
+
+
+
+
+</div>
+
+  
+    
+ 
+   
+
+
+{% endblock content %}

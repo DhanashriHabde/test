@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+            crossorigin="anonymous"
+        />
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    </head>
+    <style>
+        .navcol{
+            background-color:#112e51;
+        }
+
+        .navline{
+            background-color:#205493;
+            height:1.5rem;
+        }
+
+        .btn-primary{
+            background-color:#205493;
+        }
+        .footerlink{
+            text-decoration:none;
+            color:white;
+        }
+    </style>
+    <body class="container-fluid">
+        <div >
+            <!--navbar starts-->
+            <nav class="navbar navbar-dark navcol d-flex">
+                <div class="">
+                    <img src="{% static 'img/navlogo.png'%}" width="50" height="50">
+                    <a class="navbar-brand" href=""> &nbsp;Covid-Help Solapur</a>
+                </div>
+                <div class="">
+                    <a href="{% url 'contact' %}"><button class="btn btn-outline-primary my-2 " >Contact Us&nbsp; <i class="fas fa-phone"></i></button></a>
+                </div>
+            </nav>
+            
+            <!--navbar end-->
+       
+                {% block content %}
+
+
+                {% endblock content %}
+        </div>
+
+
+
+        <div class="col text-center">
+            <div data-aos="fade-up-right" data-aos-duration="3000" class="col  pl-5">
+                    <img src="{% static 'img/fight1.jpg' %}">
+                    <img src="{% static 'img/fight.PNG' %}">
+            </div>
+        </div>
+
+        <footer  class="container-fluid pt-5">
+                <div class="navcol">
+                    <div class="pt-3 pb-3 d-flex justify-content-center">
+                        <img src="{% static 'img/navlogo.png'%}" width="40" height="40">
+                        <h4 class="footerlink">&nbsp;Covid-Help Solapur<h4>
+                    </div>
+                    
+                    <div class="row text-light pt-2 pb-2">
+                        <div class="col">
+                            <ul style="list-style-type:none;">
+                                <li><a href="https://solapur.gov.in/en/corona/" class="footerlink" target="_blank"> Solapur Gov</a></li>
+                                <li><a href="https://selfregistration.cowin.gov.in/" class="footerlink" target="_blank">Vaccination Registration</a></li>
+                                <li> <p class="text-light pt-2">Copyright &#169; 2021 Designed by Dhanashri and Team. All rights reserved.</p>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                        
+
+                        <div class="col">
+                            <ul style="list-style-type:none;">
+                                <li>Covid Helpline:020-26127394</li>
+                                <li><a href="https://www.mohfw.gov.in/pdf/socialdistancingEnglish.pdf" class="footerlink" target="_blank">Awareness</a></li>
+                        
+                            </ul>
+                        </div>
+
+                        <div class="col">
+                            <ul style="list-style-type:none;">
+                                <li><a href="https://www.mohfw.gov.in/" class="footerlink" target="_blank">FAQ</a></li>
+                                <li><a href="http://117.240.154.243:8100/home" class="footerlink" target="_blank">Solapur district Covid Bed Official website</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col">
+                            <ul style="list-style-type:none;">
+                                <li>Contact-Us :</li>
+                                <li><i class="far fa-envelope">&nbsp; rohitpot4u@gmail.com</i></li>
+                                <li> <i class="far fa-address-book"></i> &nbsp; +91 9766741221</li>
+                                <li><i class="fab fa-instagram">&nbsp; @rohit_11</i></li>
+                               
+                            </ul>
+                        </div>
+                    
+                    </div>
+                </div>
+
+            
+
+        </footer>
+    </body>
+    <script>
+        AOS.init();
+    </script>
+</html>

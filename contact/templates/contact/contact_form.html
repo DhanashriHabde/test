@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Covid-Help Contact-Us{% endblock %}
+{% load custom_tags %}
+
+
+
+{% block content %}
+<style type="text/css">
+    mark{
+        background-color: yellow;
+    }
+</style>
+<div class="container-fluid">
+    <div class="card m-5">
+        <div class="card-header">
+            Conatct us
+        </div>
+        <div class="card-body row d-flex">
+            <h5 class="card-title">&nbsp;If you have any query..Feel free to drop your message.</h5>
+                <div class="col pt-3 flex-column">
+                    <form method="post" action="">
+                        {% csrf_token %}
+
+                        {{ form.as_p}}  
+
+                        <input type="submit" value="Submit" class="btn btn-primary mb-4">
+                    </form>
+                </div>
+                
+                <div class="col flex-column">
+                    <ul class="pt-5">
+                        <li>If you're messaging for <mark>plasma</mark>
+                            <ul><i class="fas fa-chevron-right"></i> Do mention about blood group in message box</ul>
+                            <ul><i class="fas fa-chevron-right"></i> Click on emergency</ul>
+                        </li>
+
+                        <li>If you're registering for <mark>Ambulance service</mark>
+                            <ul><i class="fas fa-chevron-right"></i> Fill out all the feilds</ul>
+                            <ul><i class="fas fa-chevron-right"></i> If you provide paid service,write <b>Paid</b> in message box</ul>
+                        </dd>
+                        <li>If you want to be <mark>volunteer</mark>
+                            <ul><i class="fas fa-chevron-right"></i> We will call you on given phone number</ul>
+                        </li>
+                    </ul>
+
+                </div>
+                    
+        </div>
+    <a href="{% url 'index' %}" class="btn btn-primary "><i class="fas fa-arrow-circle-left"></i></a>
+
+    </div>
+</div>
+{% endblock content %}
