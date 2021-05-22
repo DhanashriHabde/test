@@ -2,7 +2,7 @@
 
 {%block content %}
 <div class="container-fluid ">
-    <div class="jumbotron p-5 m-5">
+    <div class="jumbotron p-5 mt-4">
     <h1 class="display-4">{{hospital.name}}</h1>
     <h3 class="lead">{{hospital.taluka}}</h3>
     <hr class="my-4">
@@ -23,9 +23,9 @@
         </tbody>
     </table>
     
-    <p class="lead">
-        <a class="btn btn-primary " href="{% url 'index' %}" role="button">Go Back</a>
-    </p>
+   
+    <a href="{% url 'index' %}" class="btn btn-primary btn-block" role="button"><i class="fas fa-arrow-circle-left"></i></a>
+
     </div>
 </div>
 
