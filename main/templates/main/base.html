@@ -8,10 +8,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/js/all.js">
+        <meta name = "viewport" content = "width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -33,19 +37,48 @@
             text-decoration:none;
             color:white;
         }
+
+        .container-fluid-main{
+            margin:0;
+            padding:0;
+        }
+
+     
     </style>
-    <body class="container-fluid">
-        <div >
+    <body class="container-fluid-main">
+
             <!--navbar starts-->
-            <nav class="navbar navbar-dark navcol d-flex">
-                <div class="">
-                    <img src="{% static 'img/navlogo.png'%}" width="50" height="50">
-                    <a class="navbar-brand" href=""> &nbsp;Covid-Help Solapur</a>
-                </div>
-                <div class="">
-                    <a href="{% url 'contact' %}"><button class="btn btn-outline-primary my-2 " >Contact Us&nbsp; <i class="fas fa-phone"></i></button></a>
-                </div>
-            </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark navcol text-light">
+            <img src="{% static 'img/navlogo.png' %}" height="40" width="40" >&nbsp;
+            <a class="navbar-brand" href="{% url 'index' %}">Covid-Help Solapur</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'ambulance' %}">Ambulance</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Important Links
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://selfregistration.cowin.gov.in/" target="_blank">Vaccin Registration</a>
+          <a class="dropdown-item" href="https://solapur.gov.in/en/corona/" target="_blank">Solapur Official Webiste</a>
+        </div>
+      </li>
+      
+    </ul>
+    <div class=" my-2 my-lg-0">
+      <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'contact'%}" >Contact Us</a>
+    </div>
+  </div>
+</nav>
             
             <!--navbar end-->
        
@@ -53,25 +86,25 @@
 
 
                 {% endblock content %}
-        </div>
+    
 
 
 
         <div class="col text-center">
             <div data-aos="fade-up-right" data-aos-duration="3000" class="col  pl-5">
-                    <img src="{% static 'img/fight1.jpg' %}">
-                    <img src="{% static 'img/fight.PNG' %}">
+                    <img src="{% static 'img/fight1.jpg' %}" id="fight1">
+                    <img src="{% static 'img/fight.PNG' %}" id="fight2">
             </div>
         </div>
 
-        <footer  class="container-fluid pt-5">
+        <footer  class="container-fluid-main pt-5">
                 <div class="navcol">
                     <div class="pt-3 pb-3 d-flex justify-content-center">
                         <img src="{% static 'img/navlogo.png'%}" width="40" height="40">
                         <h4 class="footerlink">&nbsp;Covid-Help Solapur<h4>
                     </div>
                     
-                    <div class="row text-light pt-2 pb-2">
+                    <div class="row text-light pt-2 pb-2 mr-1">
                         <div class="col">
                             <ul style="list-style-type:none;">
                                 <li><a href="https://solapur.gov.in/en/corona/" class="footerlink" target="_blank"> Solapur Gov</a></li>
