@@ -6,9 +6,9 @@
 
 
 {% block content %}
-<div class="container-fluid">
+<div class="table-responsive ">
     
-    <table class="table table-striped tmt-4 mb-4 text-center">
+    <table class="table table-striped mt-4 mb-4 text-center">
         <thead class="">
             <tr>
                 <th scope="col">#</th>
@@ -34,14 +34,20 @@
             </tr>
        
         {% endfor %}
+            
          </tbody>
+         
 </table>
 
 
 
 
 
+
 </div>
+<div class="button">
+                <a href="{% url 'index' %}" class="btn btn-primary btn-block "><i class="fas fa-arrow-circle-left"></i></a></td>
+            </div>
 
   
     
