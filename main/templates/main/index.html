@@ -21,7 +21,7 @@
 <!--main page start-->
     <form action="" method="GET" id="filterform" class="pb-3">
 <!--dist-taluka dropdown start-->
-    <div class="row mt-2 text-center pt-4 pl-5" >
+    <div class="row mt-2 text-center pt-4" >
     <!--District select-->
         <div class="col col-xs-12">
             <div class="form-group">
@@ -81,10 +81,10 @@
 
 <!--dist-taluka dropdown end-->
 
-
+<div class="table-responsive">
 
 <!--Data table start-->
-    <table class="table table-bordered table-hover table-striped text-center mt-3 mb-5">
+    <table class="table table-striped text-center mt-3 mb-5 " width="50%" id="main" >
         <thead class="thead-light">
             <tr>
                 <th rowspan="2">Hospital</th>
@@ -116,6 +116,7 @@
 
         </tbody>
     </table>
+</div>
 <!--Data table end-->
 
     <form>
@@ -151,18 +152,18 @@
 
     <!--plasma link start-->
         <div class="col">
-            <div class="card " data-aos="fade-left" data-aos-duration="3000">
+            <div class="card " data-aos="fade-up" data-aos-duration="3000">
                 <div class="card-header">
                     Be our Covid Worrior by <b>plasma donation</b> or help us find one !
                 </div>
                 <div class="card-body">
                 <h6 class="card-title text-danger">If you have fully recovered from COVID-19, you may be able to help patients currently fighting the infection by donating your plasma.</h6>
                     <div class="col text-center">
-                        <a href="{% url 'donateplasma'%}"><img src="{% static 'img/plasma.jpg' %}" height="200" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></a>
+                        <a href="{% url 'donateplasma'%}"><img src="{% static 'img/plasma.jpg' %}" height="200" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" id="plasma"></a>
                     </div>
                     <div class="pt-3 text-center">
-                        <a href="{% url 'donateplasma'%}" class="btn btn-primary">Register for Donation &nbsp;<i class="fas fa-arrow-right"></i></a>&emsp;
-                        <a href="{% url 'contact' %}" class="btn btn-danger ">Contact for Plasma &nbsp;<i class="fas fa-phone"></i></a>
+                        <a href="{% url 'donateplasma'%}" class="btn btn-primary" id="plasmabtn">Register for Donation &nbsp;<i class="fas fa-arrow-right"></i></a>&emsp;
+                        <a href="{% url 'contact' %}" class="btn btn-danger" id="plasmabtn1">Contact for Plasma &nbsp;<i class="fas fa-phone"></i></a>
                     </div>
                 </div>
             </div>
